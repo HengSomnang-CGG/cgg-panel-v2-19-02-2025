@@ -13,7 +13,6 @@
                             <img loading="lazy" src="{{ asset('assets/images/icons.webp') }}" alt="Smart Internet"
                                 class="img-fluid object-fit-cover w-100" style="object-fit: cover;">
                         </a>
-
                     </div>
                     <form action="{{ route('homepage.search') }}" method="GET" class="w-100 mt-md-1 mt-lg-3"
                         style="max-width: 700px;">
@@ -27,12 +26,6 @@
                                         <i class="bi bi-search"></i>
                                     </button>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <button id="toggle-theme"
-                                    class="btn btn-light shadow-sm rounded-pill px-4 d-flex align-items-center gap-2">
-                                    <i id="theme-icon" class="bi bi-sun text-lg"></i>
-                                </button>
                             </div>
                         </div>
                     </form>
@@ -110,7 +103,7 @@
     @media(min-width:1280px) {
         #toggle-theme {
             top: 27%;
-        right: 51%;
+            right: 51%;
         }
     }
 </style>

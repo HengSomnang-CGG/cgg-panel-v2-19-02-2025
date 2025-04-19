@@ -7,7 +7,7 @@
     <meta description="Google Dashboard">
     <title>@yield('title', 'Google Dashboard')</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/mainlogo.webp') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/mainlogo.webp') }}" />
     <!-- Additional Styles -->
         <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">

@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="mt-2">
-        <a href="{{ $domain }}" class="text-decoration-none">
+        <a href="{{ $link }}" class="text-decoration-none" >
             <div class="h5 link-underline-opacity-0 link-underline-opacity-100-hover text-link">
                 {{ $title }}
             </div>

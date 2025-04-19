@@ -24,13 +24,15 @@
 
 
     <!-- Default light theme -->
-    <link id="theme-style" href="{{ asset('css/light.css') }}" rel="stylesheet">
+    <link id="theme-style" href="{{ asset('css/light.css') }}" rel="stylesheet" data-bs-theme="light">
 
 </head>
 
 <body class="g-sidenav-show">
-    <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ps--active-y">
-        @yield('content')
+    <main class=" main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ps--active-y">
+        <div class="mx-auto">
+            @yield('content')
+        </div>
     </main>
 
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
@@ -58,18 +60,22 @@
             document.body.classList.add(savedTheme);
             document.getElementById('theme-style').setAttribute('href', `{{ asset('css/${savedTheme}.css') }}`);
             localStorage.setItem('theme', savedTheme);
-            updateIcons(savedTheme); // <--- make sure to update icons initially
+            updateIcons(savedTheme);
 
-            const toggleThemeButton = document.getElementById('toggle-theme');
-            toggleThemeButton.addEventListener('click', function() {
-                const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const themeSwitch = document.getElementById('themeSwitch') ;
+            if (!themeSwitch) {
 
-                document.body.classList.remove(currentTheme);
+                return;
+            }
+            themeSwitch.checked = savedTheme === 'dark';
+
+            themeSwitch.addEventListener('change', function() {
+                const newTheme = themeSwitch.checked ? 'dark' : 'light';
+
+                document.body.classList.remove('light', 'dark');
                 document.body.classList.add(newTheme);
 
-                document.getElementById('theme-style').setAttribute('href',
-                    `{{ asset('css/${newTheme}.css') }}`);
+                document.getElementById('theme-style').setAttribute('href', `{{ asset('css/${newTheme}.css') }}`);
                 localStorage.setItem('theme', newTheme);
 
                 updateIcons(newTheme);
@@ -77,14 +83,8 @@
 
             function updateIcons(theme) {
                 const themeIcon = document.getElementById('theme-icon');
-                const searchIcon = document.getElementById('search-icon');
-
                 if (themeIcon) {
                     themeIcon.className = `bi ${theme === 'dark' ? 'bi-sun' : 'bi-moon'} text-lg`;
-                }
-                if (searchIcon) {
-                    searchIcon.className =
-                        `bi ${theme === 'dark' ? 'bi-search-heart' : 'bi-search'} position-absolute description-text`;
                 }
             }
         });
