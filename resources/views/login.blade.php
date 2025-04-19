@@ -1,5 +1,4 @@
 @extends('layouts.auth.app')
-
 <main class="main-content mt-0 ps">
     <section>
         <div class="page-header min-vh-100 ">
@@ -8,7 +7,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left bg-transparent d-flex justify-content-center">
-                                <img loading="lazy" src="https://clickdrive.tech/storage/cgg/smart-internet.png" alt="" class=" img-fluid mx-auto" style="object-fit: cover; width: 341px; height: 152px;">
+                                <img loading="lazy" src="{{asset('assets/images/icons.webp')}}" alt="" class=" img-fluid" style="background-size: cover; background-position: center;">
                             </div>
                             <div class="card-body">
                                 <form role="form" method="POST" action="{{ route('gate.users') }}">
@@ -38,7 +37,8 @@
                     <div class="col-md-8">
                         <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
                             <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div>
+                                style="background-image: url('{{ asset('assets/img/curved6.jpg') }}'); background-size: cover; background-position: center;">
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -88,7 +88,8 @@
                     data: 'image',
                     name: 'image',
                     render: function(data) {
-                        return `<img loading="lazy" src="${data}" alt="User Image" class="avatar avatar-sm me-3" />`;
+                        const assetBaseUrl = "{{ asset('') }}";
+                        return `<img loading="lazy" src="${assetBaseUrl}${data}" alt="User Image" class="avatar avatar-sm me-3" />`;
                     }
                 },
 

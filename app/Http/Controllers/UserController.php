@@ -66,18 +66,13 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['api_token'] = Str::random(60);
 
-        // 3. Handle image upload if present
-        if ($request->hasFile('image')) {
-            $file      = $request->file('image');
-            // Generate a unique name for the file to prevent collisions
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-
-            // Store file in ftp/uploads directory
-            // "uploads" will be the folder on your FTP server
-            $filePath = $file->storeAs('uploads', $uniqueName, 'ftp');
-
-            // Construct the public URL (so you can display it in the view)
-            $data['image'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
+        if ($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $uniqueName =  $file->getClientOriginalName();
+            $filePath= $file->storeAs('images', $uniqueName, 'public');
+            $requestData['image'] =  $filePath;
+            $data['image'] = $requestData['image'];
         }
 
         // 4. Create the user record
@@ -115,18 +110,12 @@ class UserController extends Controller
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         }
-
-
-
-        // 4. Handle new image upload
+        // If image is provided, store it
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('uploads', $uniqueName, 'ftp');
-
-
-            // Update new image URL
-            $data['image'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
+            $uniqueName =  $file->getClientOriginalName();
+            $filePath= $file->storeAs('images', $uniqueName, 'public');
+            $data['image'] = $filePath;
         }
 
         // 5. Update user record

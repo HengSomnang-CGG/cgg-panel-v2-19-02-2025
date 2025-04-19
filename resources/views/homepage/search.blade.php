@@ -11,17 +11,29 @@
                     <div class="position-relative mt-4 mb-sm-0 me-3" style="width:150px; height:55px;">
                         <a href="/">
                             <img loading="lazy" src="{{ asset('assets/images/icons.webp') }}" alt="Smart Internet"
-                                class="img-fluid object-fit-cover w-100" style="object-fit: cover;"></a>
+                                class="img-fluid object-fit-cover w-100" style="object-fit: cover;">
+                        </a>
+
                     </div>
                     <form action="{{ route('homepage.search') }}" method="GET" class="w-100 mt-md-1 mt-lg-3"
                         style="max-width: 700px;">
-                        <div class="input-group rounded-pill shadow-sm overflow-hidden">
-
-                            <input type="text" name="keyword" class="form-control border-0 bg-transparent"
-                                placeholder="Search Google..." value="{{ request('keyword') }}" aria-label="Search Google">
-                            <button type="submit" class="input-group-text bg-white border-0">
-                                <i class="bi bi-search text-dark"></i>
-                            </button>
+                        <div class="row ">
+                            <div class="col-12 col-md-9">
+                                <div class="input-group rounded-pill shadow-sm overflow-hidden">
+                                    <input type="text" name="keyword" class="form-control border-0"
+                                        placeholder="{{ session('theme', 'light') === 'dark' ? 'Search Google in dark mode...' : 'Search Google...' }}"
+                                        value="{{ request('keyword') }}" aria-label="Search Google">
+                                    <button type="submit" class="input-group-text description-text border-0 btn-light">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <button id="toggle-theme"
+                                    class="btn btn-light shadow-sm rounded-pill px-4 d-flex align-items-center gap-2">
+                                    <i id="theme-icon" class="bi bi-sun text-lg"></i>
+                                </button>
+                            </div>
                         </div>
                     </form>
 
@@ -30,12 +42,10 @@
         </div>
 
         <div class="ms-lg-9 mt-4 px-3">
-            {{-- Display total results --}}
-            <p class="text-sm text-dark mt-3 mb-3">
+            <p class=" mt-3 mb-3 description-text">
                 About {{ number_format($totalResults) }} results
             </p>
 
-            {{-- Local DB Results --}}
             @if ($localResults->count())
                 @foreach ($localResults as $item)
                     @include('homepage.components.search.result-item', [
@@ -49,7 +59,6 @@
                 @endforeach
             @endif
 
-            {{-- Google Results --}}
             @if (count($googleResults))
                 @foreach ($googleResults as $result)
                     @include('homepage.components.search.result-item', [
@@ -67,7 +76,6 @@
                 <p class="text-muted">No results found for "{{ $keyword }}".</p>
             @endif
 
-            {{-- Pagination --}}
             @if (count($googleResults))
                 @include('homepage.components.search.pagination', [
                     'currentPage' => $currentPage,
@@ -76,17 +84,33 @@
                 ])
             @endif
         </div>
-        @include('homepage.footer')
     </div>
 @endsection
-
-
 <style>
     .custom-sticky-header {
         position: sticky;
         top: 0;
         z-index: 1030;
-        background-color: white;
-        /* Important: make sure it's not transparent */
+        transition: background-color 0.3s ease;
+    }
+
+    #toggle-theme {
+        position: absolute;
+        top: 18%;
+        right: 4%;
+    }
+
+    @media (min-width: 1024px) {
+        #toggle-theme {
+            top: 26%;
+            right: 18%;
+        }
+    }
+
+    @media(min-width:1280px) {
+        #toggle-theme {
+            top: 27%;
+        right: 51%;
+        }
     }
 </style>

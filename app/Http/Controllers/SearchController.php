@@ -63,20 +63,19 @@ class SearchController extends Controller
 
         $data = $request->all();
 
-        $imageUrl =env('IMAGE_URL');
 
         if($request->hasFile('image_icon')) {
             $file = $request->file('image_icon');
             $uniqueName =  $file->getClientOriginalName();
             $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_icon'] = $imageUrl .'storage/'. $filePath;
+            $requestData['image_icon'] = $filePath;
             $data['image_icon'] = $requestData['image_icon'];
         }
         if($request->hasFile('image_main')) {
             $file = $request->file('image_main');
             $uniqueName =  $file->getClientOriginalName();
             $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_main'] =$imageUrl .'storage/'. $filePath;
+            $requestData['image_main'] =$filePath;
             $data['image_main'] = $requestData['image_main'];
         }
 
@@ -100,20 +99,19 @@ class SearchController extends Controller
 
         $search = Search::findOrFail($id);
         $data = $request->all();
-        $imageUrl =env('IMAGE_URL');
 
         if($request->hasFile('image_icon')) {
             $file = $request->file('image_icon');
             $uniqueName =  $file->getClientOriginalName();
             $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_icon'] = $imageUrl .'storage/'. $filePath;
+            $requestData['image_icon'] =  $filePath;
             $data['image_icon'] = $requestData['image_icon'];
         }
         if($request->hasFile('image_main')) {
             $file = $request->file('image_main');
             $uniqueName =  $file->getClientOriginalName();
             $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_main'] =$imageUrl .'storage/'. $filePath;
+            $requestData['image_main'] = $filePath;
             $data['image_main'] = $requestData['image_main'];
         }
 

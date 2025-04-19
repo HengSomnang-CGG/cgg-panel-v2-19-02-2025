@@ -1,0 +1,68 @@
+/* Dark theme styles */
+body {
+    background-color: #101218 !important;
+    color: #f8f9fa;
+}
+
+/* Soft UI specific adjustments */
+.card {
+    background: #495057;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme button styles */
+.btn-light {
+    background-color: #495057;
+    color: #f8f9fa;
+    border: 1px solid #6c757d;
+}
+
+.btn-light:hover {
+    background-color: #6c757d;
+    border-color: #5a6268;
+    color: #f8f9fa;
+}
+
+.btn-light i{
+    color: #f8f9fa !important;
+}
+
+.btn-light:focus, .btn-light:active {
+    background-color: #6c757d;
+    color: #f8f9fa;
+    border-color: #5a6268;
+}
+
+input.form-control {
+    background-color: #495057;
+    color: #f8f9fa;
+    border: 1px solid #6c757d;
+}
+
+input.form-control:focus {
+    background-color: #495057; /* Ensure the background remains dark */
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    color: #f8f9fa;
+}
+
+input.form-control::placeholder {
+    color: #adb5bd;
+}
+
+ /* Dark theme styles */
+ body.dark input.form-control {
+    background-color: #495057;
+    color: #f8f9fa;
+    border: 1px solid #6c757d;
+}
+
+body.dark input.form-control:focus {
+    background-color: #495057;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+body.dark input.form-control::placeholder {
+    color: #adb5bd;
+}

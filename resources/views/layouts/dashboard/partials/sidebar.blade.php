@@ -1,9 +1,9 @@
 <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps bg-white"
     id="sidenav-main">
-    <div class="sidenav-header">
-        <a class="align-items-center d-flex  m-0 " href="/panel">
-            <img loading="lazy" src="{{asset('assets/images/icons.webp')}}" class="navbar-brand-img img-fluid" alt="...">
+    <div class="sidenav-header d-flex justify-content-center align-items-center">
+        <a class="align-items-center d-flex m-0" href="/panel">
+            <img loading="lazy" src="{{ asset('assets/images/icons.webp') }}" class="navbar-brand-img img-fluid" alt="..." style="max-width: 200px;">
         </a>
     </div>
     <hr class="horizontal dark mt-0">

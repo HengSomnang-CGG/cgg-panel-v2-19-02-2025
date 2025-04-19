@@ -1,0 +1,67 @@
+/* Light theme styles */
+body {
+    background-color: #f8f9fa !important;
+    color: #212529;
+}
+
+/* Soft UI specific adjustments */
+.card {
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme button styles */
+.btn-light {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #ced4da;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    color: #212529;
+}
+
+.btn-light:focus, .btn-light:active {
+    background-color: #e2e6ea;
+    color: #212529;
+    border-color: #dae0e5;
+}
+
+/* Light theme input field styles */
+/* Light theme input field styles */
+input.form-control {
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid #ced4da;
+}
+
+input.form-control:focus {
+    background-color: #ffffff; /* Ensure the background remains light */
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+input.form-control::placeholder {
+    color: #6c757d;
+}
+
+
+ /* Light theme styles */
+ body.light input.form-control {
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid #ced4da;
+}
+
+body.light input.form-control:focus {
+    background-color: #ffffff;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+body.light input.form-control::placeholder {
+    color: #6c757d;
+}
+

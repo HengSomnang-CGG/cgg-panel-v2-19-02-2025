@@ -241,8 +241,9 @@
                     data: 'image_main',
                     name: 'image_main',
                     render: function(data) {
+                        const assetBaseUrl = "{{ asset('') }}";
                         return data ?
-                            `<img loading="lazy" src="${data}" alt="User Image" class="avatar avatar-sm me-3 no-export" />` :
+                            `<img loading="lazy" src="${assetBaseUrl}${data}" alt="User Image" class="avatar avatar-sm me-3 no-export" />` :
                             '';
                     }
                 },
@@ -250,7 +251,8 @@
                     data: 'image_icon',
                     name: 'image_icon',
                     render: function(data) {
-                        return `<img loading="lazy" src="${data}" name="image_icon" alt="User Image" class="avatar avatar-sm me-3 no-export" />`;
+                        const assetBaseUrl = "{{ asset('') }}";
+                        return `<img loading="lazy" src="${assetBaseUrl}${data}" name="image_icon" alt="User Image" class="avatar avatar-sm me-3 no-export" />`;
                     }
                 },
 

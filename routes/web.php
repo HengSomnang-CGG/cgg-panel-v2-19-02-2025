@@ -12,8 +12,7 @@ $sidebarMenu = config('sidebar');
 
  // Homepage Search
 Route::get('/',[HomeController::class,'index'])->name('homepage.index');
-Route::get('/search',[HomeController::class,'search'])->name('homepage.search');
-Route::get('/ajax/google-search', [\App\Http\Controllers\Homepage\HomeController::class, 'googleSearch'])->name('ajax.google.search');
+Route::get('/search', [HomeController::class, 'search'])->name('homepage.search');
 
 
 
