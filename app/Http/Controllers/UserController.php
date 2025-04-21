@@ -58,7 +58,6 @@ class UserController extends Controller
             'phone'    => 'required',
             'password' => 'required|min:6',
             // For modern image upload, always validate your images:
-            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         // 2. Prepare data
@@ -66,19 +65,6 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['api_token'] = Str::random(60);
 
-        // 3. Handle image upload if present
-        if ($request->hasFile('image')) {
-            $file      = $request->file('image');
-            // Generate a unique name for the file to prevent collisions
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-
-            // Store file in ftp/uploads directory
-            // "uploads" will be the folder on your FTP server
-            $filePath = $file->storeAs('uploads', $uniqueName, 'ftp');
-
-            // Construct the public URL (so you can display it in the view)
-            $data['image'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
-        }
 
         // 4. Create the user record
         User::create($data);
@@ -104,8 +90,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $id, // exclude current user's email
             'role'  => 'required',
             'phone' => 'required',
-            // Only validate image if present
-            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         // 3. Prepare data for update
@@ -116,18 +100,6 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
         }
 
-
-
-        // 4. Handle new image upload
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('uploads', $uniqueName, 'ftp');
-
-
-            // Update new image URL
-            $data['image'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
-        }
 
         // 5. Update user record
         $user->update($data);

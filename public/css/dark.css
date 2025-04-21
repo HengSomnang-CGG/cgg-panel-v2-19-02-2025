@@ -12,9 +12,8 @@ body {
 
 /* Dark theme button styles */
 .btn-light {
-    background-color: #495057;
+    background-color: #495057 !important;
     color: #f8f9fa;
-    border: 1px solid #6c757d;
 }
 
 .btn-light:hover {
@@ -23,7 +22,11 @@ body {
     color: #f8f9fa;
 }
 
-.btn-light i{
+.input-container {
+    color: #f8f9fa;
+}
+
+svg{
     color: #f8f9fa !important;
 }
 
@@ -33,10 +36,18 @@ body {
     border-color: #5a6268;
 }
 
+.input-container input {
+    color: #f8f9fa;
+}
+
 input.form-control {
+    background-color: #495057 ;
+    color: #f8f9fa;
+}
+
+.input-container{
     background-color: #495057;
     color: #f8f9fa;
-    border: 1px solid #6c757d;
 }
 
 input.form-control:focus {
@@ -54,7 +65,6 @@ input.form-control::placeholder {
  body.dark input.form-control {
     background-color: #495057;
     color: #f8f9fa;
-    border: 1px solid #6c757d;
 }
 
 body.dark input.form-control:focus {

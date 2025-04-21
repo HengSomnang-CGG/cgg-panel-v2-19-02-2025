@@ -4,17 +4,12 @@ body {
     color: #212529;
 }
 
-/* Soft UI specific adjustments */
-.card {
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
 /* Light theme button styles */
 .btn-light {
     background-color: #f8f9fa;
     color: #212529;
-    border: 1px solid #ced4da;
+     border: 1px solid black;
 }
 
 .btn-light:hover {
@@ -34,7 +29,6 @@ body {
 input.form-control {
     background-color: #ffffff;
     color: #212529;
-    border: 1px solid #ced4da;
 }
 
 input.form-control:focus {
@@ -52,7 +46,6 @@ input.form-control::placeholder {
  body.light input.form-control {
     background-color: #ffffff;
     color: #212529;
-    border: 1px solid #ced4da;
 }
 
 body.light input.form-control:focus {

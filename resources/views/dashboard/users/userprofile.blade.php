@@ -10,13 +10,6 @@
                 </div>
                 <div class="card card-body blur shadow-blur mx-4 mt-n6">
                     <div class="row gx-4">
-                        <div class="col-auto">
-                            <div class="avatar avatar-xl position-relative">
-                                {{-- If user has an image, show it, otherwise a default --}}
-                                <img id="profileImage" src="{{ $user && $user->image ? asset($user->image) : asset('assets/img/bruce-mars.jpg') }}"
-                                alt="Profile Image" class="w-100 border-radius-lg shadow-sm">
-                            </div>
-                        </div>
                         <div class="col-auto my-auto">
                             <div class="h-100">
                                 <h5 class="mb-1">
@@ -103,13 +96,6 @@
                             <!-- Role -->
                             <div class="row">
 
-                                <!-- Image -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="image" class="form-control-label"> Profile Image</label>
-                                        <input type="file" class="form-control" name="image" id="image" onchange="previewImage(event)">
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Password</label>
@@ -139,14 +125,4 @@
         </div>
     </div>
 
-    <script>
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function(){
-                const output = document.getElementById('profileImage');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
 @endsection

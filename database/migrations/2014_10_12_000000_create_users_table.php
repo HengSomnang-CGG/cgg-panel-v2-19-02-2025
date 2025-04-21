@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('phone');
             $table->string('role');
             $table->string('password');
-            $table->string('image')->nullable();
             $table->string('api_token', 80)->unique()->nullable()->default(null);
             // $table->rememberToken();
             $table->timestamps();

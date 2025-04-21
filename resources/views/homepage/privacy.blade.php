@@ -42,10 +42,11 @@
 
 <body>
     <div class="container-fluid px-lg-5">
-        <div class="webpage-header mb-4">
+        <div class="webpage-header mb-4 d-flex align-items-center gap-3">
             <a href="/">
                 <img class="webpage-logo img-fluid" src="{{ asset('assets/images/icons.webp') }}" alt="Logo">
             </a>
+            <a href="{{ route('homepage.notice') }}" class="btn-link ms-auto text-dark d-none d-lg-block" style="font-size: 22px; font-weight:900">Peringatan Penggunaan</a>
         </div>
 
         <div class="webpage-content">
@@ -97,6 +98,8 @@
                 </div>
             </div>
         </div>
+
+        <a href="{{ route('homepage.notice') }}" class="btn-link ms-auto text-dark font-bold d-lg-none float-end pb-4" style="font-size: 22px; font-weight:900">Peringatan Penggunaan</a>
     </div>
 
     <!-- Bootstrap Bundle JS -->

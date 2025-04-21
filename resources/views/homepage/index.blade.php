@@ -24,18 +24,20 @@
                 <form action="{{ route('homepage.search') }}" method="GET">
                     <div class="row g-2 align-items-center justify-content-center">
                         <div class="col-12 col-md">
-                            <div class="position-relative">
-                                <i class="bi bi-search position-absolute description-text"
-                                    style="top: 50%; left: 15px; transform: translateY(-50%);"></i>
-                                <input id="search" name="keyword" type="text"
-                                    class="form-control ps-5 pe-5 py-3 rounded-pill shadow-sm w-100"
-                                    placeholder="Search Google or type a URL" autofocus required />
+                            <div class="input-container">
+                                <!-- Search icon (SVG) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" >
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 6.65a7.5 7.5 0 010 10.6z" />
+                                </svg>
+                                <input id="search" name="keyword" type="text" placeholder="Masukan keyword yang ingin anda cari"
+                                    class="text-center bg-transparent">
                             </div>
                         </div>
                         <div class="col-12 col-md-auto text-center text-md-start mt-3">
                             <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-4">
-                                <button type="submit" class="btn btn-light shadow-sm rounded-pill px-4">
-                                    Temukan
+                                <button type="submit" class="custom-button  bg-transparent btn-light ">
+                                    Cari Sekarang
                                 </button>
 
                             </div>
@@ -44,32 +46,102 @@
                 </form>
             </div>
         </div>
-        <footer class="text-center pb-12 d-flex justify-content-center mx-auto gap-5">
-           <a href="{{route('homepage.privacy')}}"  class="textlink">Kebijakan Privasi</a>
-           <a href="{{route('homepage.notice')}}"  class="textlink">Peringatan Penggunaan</a>
+        <footer
+            class="text-center pb-5 d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 gap-md-5">
+
+            <a href="{{ route('homepage.privacy') }}" class="textlink">Kebijakan Privasi</a>
+            <a href="{{ route('homepage.notice') }}" class="textlink">Peringatan Penggunaan</a>
         </footer>
     </div>
 @endsection
 
 <!-- Updated Theme Styles -->
 <style>
-   .theme-toggle {
-    position: fixed;
-    top: 15px;
-    right:0;
-    z-index: 1000;
-    box-shadow: none;
-    box-shadow: 0 0 0 !important;
-}
+    .input-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid black;
+        border-radius: 8px;
+        padding: 8px 14px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
 
-@media (min-width: 1024px) {
-    top: 59px;
-    right: 44px;
-}
-@media (min-width: 1600px) {
-    top: 59px;
-    right: 60px;
-}
+    @media(min-width: 1024px) {
+        .input-container {
+            max-width: 900px;
+
+        }
+        .input-container input {
+            text-align: start !important;
+        }
+    }
+
+    .input-container svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+    .input-container input {
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: 1.25rem;
+        font-style: italic;
+    }
+
+
+    .custom-button {
+        display: inline-block;
+        padding: 5px 49px;
+        font-weight: bold;
+        font-size: 16px;
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .custom-button:hover {
+        background-color: #f0f0f0;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .btn {
+        text-transform: capitalize !important;
+    }
+
+    .theme-toggle {
+        position: fixed;
+        top: 15px;
+        right: 0;
+        z-index: 1000;
+        box-shadow: none;
+        box-shadow: 0 0 0 !important;
+    }
+
+    @media (min-width: 1024px) {
+        top: 59px;
+        right: 44px;
+    }
+
+    @media (min-width: 1600px) {
+        top: 59px;
+        right: 60px;
+    }
+
     .toggle-label {
         cursor: pointer;
         width: 60px;
@@ -157,5 +229,3 @@
 
     }
 </style>
-
-

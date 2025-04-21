@@ -39,10 +39,11 @@
 <body>
 
     <div class="container-fluid px-lg-5">
-        <div class="webpage-header mb-4">
+        <div class="webpage-header mb-4 d-flex align-items-center gap-3">
             <a href="/">
                 <img class="webpage-logo img-fluid" src="{{ asset('assets/images/icons.webp') }}" alt="Logo">
             </a>
+            <a href="{{ route('homepage.privacy') }}" class="btn-link ms-auto text-dark d-none d-lg-block" style="font-size: 22px; font-weight:900">Kebijakan Privasi</a>
         </div>
 
         <h4>Peringatan Penggunaan</h4>
@@ -88,6 +89,7 @@
             <p>Hormat kami,</p>
             <p><strong>Tim Carikami</strong></p>
         </div>
+        <a href="{{ route('homepage.privacy') }}" class="btn-link ms-auto text-dark  d-lg-none float-end pb-4" style="font-size: 22px; font-weight:900">Kebijakan Privasi</a>
     </div>
 
 

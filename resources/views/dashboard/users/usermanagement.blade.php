@@ -34,8 +34,6 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Role</th>
-                            <th>Image</th>
-
                         </tr>
                     </thead>
                 </table>
@@ -84,13 +82,6 @@
                 { data: 'email', name: 'email' },
                 { data: 'phone', name: 'phone' },
                 { data: 'role', name: 'role' },
-                {
-                    data: 'image',
-                    name: 'image',
-                    render: function(data) {
-                        return `<img loading="lazy" src="${data}" alt="User Image" class="avatar avatar-sm me-3" />`;
-                    }
-                },
 
             ]
         });
