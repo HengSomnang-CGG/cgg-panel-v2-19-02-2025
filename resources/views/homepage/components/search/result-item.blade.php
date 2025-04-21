@@ -11,7 +11,6 @@
     use Illuminate\Support\Str;
 
     $link = Str::startsWith($domain, ['http://', 'https://']) ? $domain : 'https://' . $domain;
-    $image_icon = Str::startsWith($image_icon, ['http://', 'https://','data:']) ? $image_icon : asset($image_icon);
 @endphp
 
 

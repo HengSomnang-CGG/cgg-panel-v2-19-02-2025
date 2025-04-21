@@ -62,24 +62,21 @@ class SearchController extends Controller
         ]);
 
         $data = $request->all();
-
-
-        if($request->hasFile('image_icon')) {
+        if ($request->hasFile('image_icon')) {
             $file = $request->file('image_icon');
-            $uniqueName =  $file->getClientOriginalName();
-            $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_icon'] = $filePath;
-            $data['image_icon'] = $requestData['image_icon'];
+            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('uploads', $uniqueName, 'ftp');
+            $data['image_icon'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
-        if($request->hasFile('image_main')) {
+        if ($request->hasFile('image_main')) {
             $file = $request->file('image_main');
-            $uniqueName =  $file->getClientOriginalName();
-            $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_main'] =$filePath;
-            $data['image_main'] = $requestData['image_main'];
+            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('uploads', $uniqueName, 'ftp');
+            $data['image_main'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
 
-        Search::create($data
+        Search::create(
+            $data
         );
         return response()->json(['success' => 'Search added successfully!']);
     }
@@ -100,19 +97,18 @@ class SearchController extends Controller
         $search = Search::findOrFail($id);
         $data = $request->all();
 
-        if($request->hasFile('image_icon')) {
+        if ($request->hasFile('image_icon')) {
+
             $file = $request->file('image_icon');
-            $uniqueName =  $file->getClientOriginalName();
-            $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_icon'] =  $filePath;
-            $data['image_icon'] = $requestData['image_icon'];
+            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('uploads', $uniqueName, 'ftp');
+            $data['image_icon'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
-        if($request->hasFile('image_main')) {
+        if ($request->hasFile('image_main')) {
             $file = $request->file('image_main');
-            $uniqueName =  $file->getClientOriginalName();
-            $filePath= $file->storeAs('images', $uniqueName, 'public');
-            $requestData['image_main'] = $filePath;
-            $data['image_main'] = $requestData['image_main'];
+            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('uploads', $uniqueName, 'ftp');
+            $data['image_main'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
 
         $search->update($data);
@@ -120,28 +116,30 @@ class SearchController extends Controller
         return response()->json(['success' => 'Search updated successfully!']);
     }
 
-
     public function destroy($id)
     {
         $search = Search::findOrFail($id);
 
-        // Delete the image_icon file if it exists
+        // Delete the image_icon file from FTP if it exists
         if ($search->image_icon) {
-            Storage::disk('public')->delete($search->image_icon);
+            $filename = basename($search->image_icon);
+            Storage::disk('ftp')->delete('uploads/' . $filename);
         }
 
-        // Delete the image_main file if it exists
+        // Delete the image_main file from FTP if it exists
         if ($search->image_main) {
-            Storage::disk('public')->delete($search->image_main);
+            $filename = basename($search->image_main);
+            Storage::disk('ftp')->delete('uploads/' . $filename);
         }
 
         $search->delete();
+
         return response()->json(['success' => 'Search deleted successfully!']);
     }
+
 
     public function export()
     {
         return Excel::download(new SearchExport, 'searches.xlsx');
     }
-
 }
