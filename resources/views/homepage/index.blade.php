@@ -44,6 +44,10 @@
                 </form>
             </div>
         </div>
+        <footer class="text-center pb-12 d-flex justify-content-center mx-auto gap-5">
+           <a href="{{route('homepage.privacy')}}"  class="textlink">Kebijakan Privasi</a>
+           <a href="{{route('homepage.notice')}}"  class="textlink">Peringatan Penggunaan</a>
+        </footer>
     </div>
 @endsection
 
@@ -141,6 +145,16 @@
         background-color: #333;
         color: #fff;
         border-color: #444;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        gap: 5px;
+        padding-bottom: 12px;
+        margin: auto;
+
     }
 </style>
 

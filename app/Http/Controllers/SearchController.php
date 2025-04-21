@@ -58,7 +58,6 @@ class SearchController extends Controller
             'website_name' => 'required',
             'description' => 'required',
             'image_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            'image_main' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         $data = $request->all();
@@ -67,12 +66,6 @@ class SearchController extends Controller
             $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('uploads', $uniqueName, 'ftp');
             $data['image_icon'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
-        }
-        if ($request->hasFile('image_main')) {
-            $file = $request->file('image_main');
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('uploads', $uniqueName, 'ftp');
-            $data['image_main'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
 
         Search::create(
@@ -91,7 +84,6 @@ class SearchController extends Controller
             'website_name' => 'required',
             'description' => 'required',
             'image_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            'image_main' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         $search = Search::findOrFail($id);
@@ -104,13 +96,6 @@ class SearchController extends Controller
             $file->storeAs('uploads', $uniqueName, 'ftp');
             $data['image_icon'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
-        if ($request->hasFile('image_main')) {
-            $file = $request->file('image_main');
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('uploads', $uniqueName, 'ftp');
-            $data['image_main'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
-        }
-
         $search->update($data);
 
         return response()->json(['success' => 'Search updated successfully!']);
@@ -123,12 +108,6 @@ class SearchController extends Controller
         // Delete the image_icon file from FTP if it exists
         if ($search->image_icon) {
             $filename = basename($search->image_icon);
-            Storage::disk('ftp')->delete('uploads/' . $filename);
-        }
-
-        // Delete the image_main file from FTP if it exists
-        if ($search->image_main) {
-            $filename = basename($search->image_main);
             Storage::disk('ftp')->delete('uploads/' . $filename);
         }
 

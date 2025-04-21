@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('website_name');
             $table->string('description',500);
             $table->string('image_icon')->nullable();
-            $table->string('image_main')->nullable();
             $table->timestamps();
         });
     }

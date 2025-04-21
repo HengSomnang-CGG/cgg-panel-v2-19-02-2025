@@ -13,6 +13,8 @@ $sidebarMenu = config('sidebar');
  // Homepage Search
 Route::get('/',[HomeController::class,'index'])->name('homepage.index');
 Route::get('/search', [HomeController::class, 'search'])->name('homepage.search');
+Route::get('/privacy', [HomeController::class, 'privacy'])->name('homepage.privacy');
+Route::get('/notice', [HomeController::class, 'notice'])->name('homepage.notice');
 
 
 

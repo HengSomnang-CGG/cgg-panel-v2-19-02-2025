@@ -18,6 +18,16 @@ class HomeController extends Controller
         return view('homepage.index');
     }
 
+    public function privacy()
+    {
+        return view('homepage.privacy');
+    }
+
+    public function notice()
+    {
+        return view('homepage.notice');
+    }
+
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');

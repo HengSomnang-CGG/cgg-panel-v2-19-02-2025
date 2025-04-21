@@ -47,7 +47,6 @@
                             <th>Keyword</th>
                             <th>Title</th>
                             <th>Description</th>
-                            <th class="no-export">Image Main</th>
                             <th class="no-export">Image Icon</th>
                         </tr>
                     </thead>
@@ -121,22 +120,6 @@
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea name="description" id="description" class="form-control form-control-sm" rows="3" required></textarea>
-                        </div>
-
-                        <div class="mb-3">
-
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="image_main" class="form-label">Upload Main Image</label>
-                            <!-- Input Field -->
-                            <input type="file" name="image_main" id="image_main"
-                                class="form-control form-control-sm mb-3" accept="image/*">
-                            <!-- Image Preview -->
-                            <div class="w-100">
-                                <img id="image_main_preview" src="#" alt="Image Preview"
-                                    name="image_main_preview" class="w-100">
-                            </div>
                         </div>
 
                     </div>
@@ -238,15 +221,6 @@
                     name: 'description'
                 },
                 {
-                    data: 'image_main',
-                    name: 'image_main',
-                    render: function(data) {
-                        return data ?
-                            `<img loading="lazy" src="${data}" alt="User Image" class="avatar avatar-sm me-3 no-export" />` :
-                            '';
-                    }
-                },
-                {
                     data: 'image_icon',
                     name: 'image_icon',
                     render: function(data) {
@@ -270,7 +244,6 @@
                 description: $('#description').val(),
                 image: $('#image_icon').val(),
                 website_name: $('#website_name').val(),
-                image_main: $('#image_main').val(),
             };
 
             var isChanged = JSON.stringify(originalData) !== JSON.stringify(currentData);
@@ -290,18 +263,6 @@
             }
         });
 
-        $('#image_main').on('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    $('#image_main_preview').attr('src', event.target.result).show();
-                };
-                reader.readAsDataURL(file);
-            } else {
-                $('#image_main_preview').hide();
-            }
-        });
 
         // // Clear image preview on modal close
         $('#dynamicModal').on('hidden.bs.modal', function() {
@@ -321,7 +282,6 @@
             $('#saveButton').text('Save').prop('disabled', true); // Disable save button initially
             $('#dynamicModal').modal('show');
             $('#imagePreview').hide().attr('src', '#');
-            $('#image_main_preview').hide().attr('src', '#');
 
 
 
@@ -356,13 +316,6 @@
                     // $('#imagePreview').hide();
                 }
 
-                // set image main preview
-                if (data.image_main) {
-                    $('#image_main_preview').attr('src', `${data.image_main}`).show();
-                } else {
-                    $('#image_main_preview').hide();
-                }
-
 
                 originalData = {
                     domain: data.domain,
@@ -372,7 +325,6 @@
                     description: data.description,
                     image_icon: data.image_icon,
                     website_name: data.website_name,
-                    image_main: data.image_main,
 
                 };
 
@@ -398,13 +350,6 @@
             if (imageFile) {
                 formData.append('image_icon', imageFile);
             }
-
-            const imageMainFile = $('#image_main')[0].files[0];
-            if (imageMainFile) {
-                formData.append('image_main', imageMainFile);
-            }
-
-
             const id = $('#record-id').val();
             const url = id ?
                 "{{ route('searches.update', ':id') }}".replace(':id', id) :
