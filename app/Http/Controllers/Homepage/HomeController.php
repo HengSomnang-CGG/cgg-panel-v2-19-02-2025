@@ -29,34 +29,39 @@ class HomeController extends Controller
     }
 
     public function search(Request $request)
-{
-    $keyword = $request->input('keyword');
-    $page = (int) $request->input('page', 1);
-    $resultsPerPage = 10;
-    $promises = [];
+    {
+        $keyword = $request->input('keyword');
+        $page = (int) $request->input('page', 1);
+        $resultsPerPage = 10;
+        $promises = [];
 
-    // Local DB fetch in a Promise with additional search fields
-    $promises['local'] = Create::promiseFor(
-        Search::Where('website_name', 'LIKE', '%' . $keyword . '%')
-            ->orWhere('domain', 'LIKE', '%' . $keyword . '%')
-            ->paginate($resultsPerPage, ['*'], 'page', $page)
-    );
+        // Local DB fetch in a Promise with additional search fields
+        $promises['local'] = Create::promiseFor(
+            Search::Where('website_name', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('domain', 'LIKE', '%' . $keyword . '%')
+                ->paginate($resultsPerPage, ['*'], 'page', $page)
+        );
 
-    // Wait for both in parallel
-    $responses = Utils::all($promises)->wait();
+        // Wait for both in parallel
+        $responses = Utils::all($promises)->wait();
 
-    // Extract local results
-    $localResults = $responses['local'];
+        // Extract local results
+        $localResults = $responses['local'];
 
-    $totalResults = $localResults->total();
+        // Check if no results are found
+        if ($localResults->isEmpty()) {
+            $localResults = Search::paginate($resultsPerPage, ['*'], 'page', $page);
+        }
+
+        $totalResults = $localResults->total();
 
 
-    return view('homepage.search', [
-        'keyword' => $keyword,
-        'localResults' => $localResults,
-        'totalResults' => $totalResults,
-        'currentPage' => $page,
-        'resultsPerPage' => $resultsPerPage,
-    ]);
-}
+        return view('homepage.search', [
+            'keyword' => $keyword,
+            'localResults' => $localResults,
+            'totalResults' => $totalResults,
+            'currentPage' => $page,
+            'resultsPerPage' => $resultsPerPage,
+        ]);
+    }
 }
