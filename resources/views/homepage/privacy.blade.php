@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carikami Privacy Policy</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/mainlogo.webp') }}">
+    <title>Masuk Privacy Policy</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.webp') }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
     <div class="container-fluid px-lg-5">
         <div class="webpage-header mb-4 d-flex align-items-center gap-3">
             <a href="/">
-                <img class="webpage-logo img-fluid" src="{{ asset('assets/images/icons.webp') }}" alt="Logo">
+                <img class="webpage-logo img-fluid" src="{{ asset('assets/img/logo.webp') }}" alt="Logo">
             </a>
             <a href="{{ route('homepage.notice') }}" class="btn-link ms-auto text-dark d-none d-lg-block" style="font-size: 22px; font-weight:900">Peringatan Penggunaan</a>
         </div>
@@ -54,14 +54,14 @@
             <div class="row">
                 <div class="col-lg-9">
                     <p>
-                        Carikami tidak bertanggung jawab atas konten yang ditampilkan jika Anda menuju ke website pihak
-                        lain dari hasil pencarian yang ditampilkan di halaman Carikami. Website yang Anda tuju mungkin
+                        Masuk tidak bertanggung jawab atas konten yang ditampilkan jika Anda menuju ke website pihak
+                        lain dari hasil pencarian yang ditampilkan di halaman Masuk. Website yang Anda tuju mungkin
                         memiliki kebijakan privasi yang berbeda, dan Anda wajib memeriksanya secara langsung di situs
                         tersebut.
                     </p>
 
                     <h4>Jenis Data</h4>
-                    <p>Carikami mencatat data yang berhubungan dengan pelanggan melalui metode berikut:</p>
+                    <p>Masuk mencatat data yang berhubungan dengan pelanggan melalui metode berikut:</p>
                     <ul>
                         <li>Metode pencatatan data otomatis seperti (namun tidak terbatas pada) protokol komunikasi,
                             alamat IP, cookies, dan lainnya.</li>
@@ -71,7 +71,7 @@
                     </ul>
 
                     <h4>Penggunaan Data</h4>
-                    <p>Jenis-jenis data di atas digunakan oleh Carikami untuk:</p>
+                    <p>Jenis-jenis data di atas digunakan oleh Masuk untuk:</p>
                     <ul>
                         <li>Melakukan komunikasi dalam rangka penyediaan layanan.</li>
                         <li>Melakukan pertanggungjawaban atas layanan kepada pelanggan maupun pihak berwenang.</li>
@@ -82,14 +82,14 @@
 
                     <h4>Keamanan Data</h4>
                     <p>
-                        Carikami berupaya semaksimal mungkin menjaga data pribadi/perusahaan pelanggan dari akses pihak
+                        Masuk berupaya semaksimal mungkin menjaga data pribadi/perusahaan pelanggan dari akses pihak
                         yang tidak berwenang, kecuali untuk keperluan yang telah disebutkan dalam bagian "Penggunaan
                         Data".
                     </p>
 
                     <h4>Batasan Kerahasiaan Data</h4>
                     <p>
-                        Data dianggap bukan rahasia dan Carikami dibebaskan dari kewajiban untuk melindunginya apabila
+                        Data dianggap bukan rahasia dan Masuk dibebaskan dari kewajiban untuk melindunginya apabila
                         data tersebut telah menjadi bagian dari domain publik dan diketahui secara umum akibat kebijakan
                         dari pihak yang berwenang untuk mempublikasikannya, seperti pada data WHOIS domain dan
                         lainnya.### 4. Peringatan Penggunaan Deskripsi: Daftar aturan yang melarang konten negatif

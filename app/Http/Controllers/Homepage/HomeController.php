@@ -54,6 +54,7 @@ class HomeController extends Controller
                         'q' => $keyword,
                         'page' => $page,
                         'num' => 10,
+                        'connect_timeout' => 10,
                     ],
                     'verify' => false,
                 ]);

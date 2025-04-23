@@ -1,6 +1,6 @@
 @extends('layouts.homepage.app')
 
-@section('title', 'Carikami Search')
+@section('title', 'Masuk Search')
 
 <!-- Include the Bootstrap Icons stylesheet -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <div class="min-vh-100 d-flex flex-column justify-content-between">
         <div class="flex-grow-1 d-flex align-items-center justify-content-center">
             <div class="text-center px-3" style="width: 100%; max-width: 720px;">
-                <img src="{{ asset('assets/images/icons.webp') }}" class="img-fluid mb-4" alt="Smart Internet Logo"
+                <img src="{{ asset('assets/img/logo.webp') }}" class="img-fluid mb-4" alt="Smart Internet Logo"
                     loading="eager" style="max-width:272px" />
 
                 <!-- Search form -->

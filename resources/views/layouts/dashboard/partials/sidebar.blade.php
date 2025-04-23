@@ -3,7 +3,7 @@
     id="sidenav-main">
     <div class="sidenav-header d-flex justify-content-center align-items-center">
         <a class="align-items-center d-flex m-0" href="/panel">
-            <img loading="lazy" src="{{ asset('assets/images/icons.webp') }}" class="navbar-brand-img img-fluid" alt="..." style="max-width: 200px;">
+            <img loading="lazy" src="{{ asset('assets/img/logo.webp') }}" class="navbar-brand-img img-fluid" alt="..." style="max-width: 200px;">
         </a>
     </div>
     <hr class="horizontal dark mt-0">

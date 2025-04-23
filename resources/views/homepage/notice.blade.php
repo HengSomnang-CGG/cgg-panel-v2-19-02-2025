@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/mainlogo.webp') }}">
-    <title>Carikami - Peringatan</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.webp') }}">
+    <title>Masuk - Peringatan</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@
     <div class="container-fluid px-lg-5">
         <div class="webpage-header mb-4 d-flex align-items-center gap-3">
             <a href="/">
-                <img class="webpage-logo img-fluid" src="{{ asset('assets/images/icons.webp') }}" alt="Logo">
+                <img class="webpage-logo img-fluid" src="{{ asset('assets/img/logo.webp') }}" alt="Logo">
             </a>
             <a href="{{ route('homepage.privacy') }}" class="btn-link ms-auto text-dark d-none d-lg-block" style="font-size: 22px; font-weight:900">Kebijakan Privasi</a>
         </div>

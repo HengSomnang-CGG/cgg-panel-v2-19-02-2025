@@ -1,5 +1,5 @@
 @extends('layouts.homepage.app')
-@section('title', request('keyword') ? 'Carikami - ' . request('keyword') : 'Carikami Search')
+@section('title', request('keyword') ? 'Masuk - ' . request('keyword') : 'Masuk Search')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 @section('content')
@@ -10,7 +10,7 @@
                 <div class="d-flex flex-column flex-sm-row align-items-center w-100 px-3">
                     <div class="position-relative mt-4 mb-sm-0 me-3" style="width:150px; height:55px;">
                         <a href="/">
-                            <img loading="lazy" src="{{ asset('assets/images/icons.webp') }}" alt="Smart Internet"
+                            <img loading="lazy" src="{{ asset('assets/img/logo.webp') }}" alt="Smart Internet"
                                 class="img-fluid object-fit-cover w-100" style="object-fit: cover;">
                         </a>
                     </div>
@@ -58,7 +58,7 @@
                         'title' => $result['title'] ?? 'No Title Available',
                         'website_name' => $result['link'] ?? 'No Link Available',
                         'description' => $result['snippet'] ?? 'No Description Available',
-                        'image_icon' => $result['favicon'] ?? 'default-favicon.png', // Provide a default favicon path
+                        'image_icon' => $result['favicon'] ?? "/assets/img/favicon.webp", // Provide a default favicon path
                         'domain' => $result['domain'] ?? 'No Domain Available',
                         'source' => $result['source'] ?? 'Unknown Source',
                     ])

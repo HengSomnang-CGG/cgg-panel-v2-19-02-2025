@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta description="Google Dashboard">
-    <title>@yield('title', 'Google Dashboard')</title>
-
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/mainlogo.webp') }}" />
+    <title>@yield('title', 'Masuk Dashboard')</title>
     <!-- Additional Styles -->
         <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -23,6 +21,8 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/soft-design-system.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('/assets/css/app.css') }}">
+    {{-- <link rel="icon"   href="{{ asset('assets/img/favicon.webp?v1') }}" /> --}}
+    <link rel="icon" type="image/webp" href="{{ asset('assets/img/favicon.webp') }}">
     @stack('styles')
 </head>
 <body>

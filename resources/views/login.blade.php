@@ -7,7 +7,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left bg-transparent d-flex justify-content-center">
-                                <img loading="lazy" src="{{asset('assets/images/icons.webp')}}" alt="" class=" img-fluid" style="background-size: cover; background-position: center;">
+                                <img loading="lazy" src="{{asset('assets/img/logo.webp')}}" alt="" class=" img-fluid" style="background-size: cover; background-position: center;">
                             </div>
                             <div class="card-body">
                                 <form role="form" method="POST" action="{{ route('gate.users') }}">
