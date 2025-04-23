@@ -19,7 +19,7 @@ class SearchController extends Controller
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $data = Search::query();
+            $data = Search::query()->inRandomOrder();
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
                     return '

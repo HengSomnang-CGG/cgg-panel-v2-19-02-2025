@@ -35,10 +35,11 @@ class HomeController extends Controller
         $resultsPerPage = 10;
         $promises = [];
 
-        // Local DB fetch in a Promise with additional search fields
+        // Local DB fetch in a Promise with randomization
         $promises['local'] = Create::promiseFor(
-            Search::Where('website_name', 'LIKE', '%' . $keyword . '%')
+            Search::where('website_name', 'LIKE', '%' . $keyword . '%')
                 ->orWhere('domain', 'LIKE', '%' . $keyword . '%')
+                ->inRandomOrder() // Randomize the results
                 ->paginate($resultsPerPage, ['*'], 'page', $page)
         );
 
@@ -50,11 +51,11 @@ class HomeController extends Controller
 
         // Check if no results are found
         if ($localResults->isEmpty()) {
-            $localResults = Search::paginate($resultsPerPage, ['*'], 'page', $page);
+            $localResults = Search::inRandomOrder() // Randomize fallback results
+                ->paginate($resultsPerPage, ['*'], 'page', $page);
         }
 
         $totalResults = $localResults->total();
-
 
         return view('homepage.search', [
             'keyword' => $keyword,
