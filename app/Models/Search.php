@@ -21,7 +21,6 @@ class Search extends Model
     protected $fillable = [
         'domain',
         'date',
-        'keyword',
         'title',
         'website_name',
         'description',

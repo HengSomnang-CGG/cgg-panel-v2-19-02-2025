@@ -44,7 +44,6 @@
                             <th>Website Name</th>
                             <th>Domain</th>
                             <th>Date</th>
-                            <th>Keyword</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th class="no-export">Image Icon</th>
@@ -112,12 +111,6 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="keyword" class="form-label">Keyword</label>
-                            <input type="text" name="keyword" id="keyword" class="form-control form-control-sm"
-                                required>
-                        </div>
-
-                        <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea name="description" id="description" class="form-control form-control-sm" rows="3" required></textarea>
                         </div>
@@ -166,12 +159,6 @@
 <script>
     $(document).ready(function() {
         var originalData = {}; // Object to store the original values
-        const multipleSelect = document.getElementById('keyword');
-        const choices = new Choices(multipleSelect, {
-            removeItemButton: true, // Allow users to remove selected items
-            searchEnabled: true, // Enable search functionality
-            duplicateItemsAllowed: false, // Do not allow duplicate items
-        });
 
         var table = $('#searches-table').DataTable({
             responsive: true,
@@ -199,17 +186,8 @@
                     name: 'domain'
                 },
                 {
-                    data: 'date',
+                data: 'date',
                     name: 'date',
-                },
-                {
-                    data: 'keyword',
-                    name: 'keyword',
-                    render: function(data) {
-                        return data ? data.split(',').map(keyword =>
-                                `<span class="badge bg-info text-white">${keyword}</span>`)
-                            .join(' ') : '';
-                    }
                 },
                 {
                     data: 'title',
@@ -239,7 +217,6 @@
             var currentData = {
                 domain: $('#domain').val(),
                 date: $('#date').val(),
-                keyword: $('#keyword').val(),
                 title: $('#title').val(),
                 description: $('#description').val(),
                 image: $('#image_icon').val(),
@@ -292,13 +269,6 @@
             var id = $(this).data('id');
             $.get(`{{ route('searches.show', ':id') }}`.replace(':id', id), function(data) {
 
-                choices.clearStore();
-
-                // If your keywords are stored as "keyword1,keyword2"
-                if (data.keyword) {
-                    let keywordsArray = data.keyword.split(',');
-                    choices.setValue(keywordsArray);
-                }
 
                 $('#record-id').val(data.id);
                 $('#domain').val(data.domain);
@@ -409,7 +379,6 @@
             $(this).attr('inert', '');
             $('#dynamicForm')[0].reset();
             $('#record-id').val('');
-            choices.clearStore();
             $('#saveButton').text('Save').prop('disabled', true); // Reset button state
             originalData = {};
         });

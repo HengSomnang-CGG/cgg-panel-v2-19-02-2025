@@ -23,12 +23,11 @@ class SearchTableSeed extends Seeder
             DB::table('searches')->insert([
                 'domain' => $data['domain'],
                 'date' => $faker->dateTimeBetween('-1 year', 'now'),
-                'keyword' => $data['domain'] . ',' . str_replace(' ', ',', $data['title']),
+                // 'keyword' => $data['domain'] . ',' . str_replace(' ', ',', $data['title']),
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'website_name' => $faker->company,
                 'image_icon' => 'https://picsum.photos/150?text=' . urlencode($data['domain']),
-                'image_main' => 'https://picsum.photos/300/200?text=' . urlencode($data['domain']),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -44,12 +43,11 @@ class SearchTableSeed extends Seeder
             DB::table('searches')->insert([
                 'domain' => $domain,
                 'date' => $faker->dateTimeBetween('-1 year', 'now'),
-                'keyword' => $keyword,
+                // 'keyword' => $keyword,
                 'title' => $title,
                 'description' => $faker->text(500),
                 'website_name' => $faker->company,
                 'image_icon' => 'https://picsum.photos/150?text=' . urlencode($domain),
-                'image_main' => 'https://picsum.photos/300/200?text=' . urlencode($domain),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

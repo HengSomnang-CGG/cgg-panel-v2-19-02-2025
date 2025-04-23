@@ -3,7 +3,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 @section('content')
-    <div class="min-vh-100 d-flex flex-column justify-content-between">
+    <div class=" d-flex flex-column justify-content-between">
         <div class="d-flex flex-column custom-sticky-header" style="z-index: 1000; opacity: 0.95;">
             {{-- Header --}}
             <header class="mt-1">
@@ -52,24 +52,11 @@
                 @endforeach
             @endif
 
-            @if (count($googleResults))
-                @foreach ($googleResults as $result)
-                    @include('homepage.components.search.result-item', [
-                        'title' => $result['title'] ?? 'No Title Available',
-                        'website_name' => $result['link'] ?? 'No Link Available',
-                        'description' => $result['snippet'] ?? 'No Description Available',
-                        'image_icon' => $result['favicon'] ?? "/assets/img/favicon.webp", // Provide a default favicon path
-                        'domain' => $result['domain'] ?? 'No Domain Available',
-                        'source' => $result['source'] ?? 'Unknown Source',
-                    ])
-                @endforeach
-            @endif
-
-            @if (!$localResults->count() && !count($googleResults))
+            @if (!$localResults->count())
                 <p class="text-muted">No results found for "{{ $keyword }}".</p>
             @endif
 
-            @if (count($googleResults))
+            @if ($localResults->count())
                 @include('homepage.components.search.pagination', [
                     'currentPage' => $currentPage,
                     'totalResults' => $totalResults,

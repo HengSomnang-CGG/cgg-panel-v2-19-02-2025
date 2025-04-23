@@ -47,55 +47,45 @@ class SearchController extends Controller
         return response()->json($search);
     }
 
-
-    public function store(Request $request)
+    private function validatation(Request $request)
     {
         $request->validate([
             'domain' => 'required',
             'date' => 'required|date',
-            'keyword' => 'required',
             'title' => 'required|max:255',
             'website_name' => 'required',
             'description' => 'required',
             'image_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
+    }
 
-        $data = $request->all();
+    private function upload(Request $request)
+    {
         if ($request->hasFile('image_icon')) {
             $file = $request->file('image_icon');
             $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('uploads', $uniqueName, 'ftp');
-            $data['image_icon'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
+            return 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
         }
+        return null;
+    }
 
-        Search::create(
-            $data
-        );
+
+    public function store(Request $request)
+    {
+        $this->validatation($request);
+        $data = $request->all();
+        $data['image_icon'] = $this->upload($request);
+        Search::create($data);
         return response()->json(['success' => 'Search added successfully!']);
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'domain' => 'required',
-            'date' => 'required|date',
-            'keyword' => 'required',
-            'title' => 'required|max:255',
-            'website_name' => 'required',
-            'description' => 'required',
-            'image_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-        ]);
-
+        $this->validatation($request);
         $search = Search::findOrFail($id);
         $data = $request->all();
-
-        if ($request->hasFile('image_icon')) {
-
-            $file = $request->file('image_icon');
-            $uniqueName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('uploads', $uniqueName, 'ftp');
-            $data['image_icon'] = 'https://cdn.it-cg.group/xerum/uploads/' . $uniqueName;
-        }
+        $data['image_icon'] = $this->upload($request);
         $search->update($data);
 
         return response()->json(['success' => 'Search updated successfully!']);

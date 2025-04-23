@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('domain');
             $table->dateTime('date');
-            $table->string('keyword');
+            // $table->string('keyword');
             $table->string('title');
             $table->string('website_name');
             $table->string('description',500);

@@ -13,7 +13,7 @@ class SearchBlogController extends Controller
         $searches = Search::all();
         return response()->json($searches);
     }
-    
+
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -109,52 +109,52 @@ class SearchBlogController extends Controller
         return $matches[0]; // Return all matched date patterns
     }
 
-    public function imageScrollPage(Request $request)
-    {
-        $page = $request->input('page', 1);
-        $perPage = $request->input('perPage', 10);
-        $keyword = $request->input('keyword', '');
+    // public function imageScrollPage(Request $request)
+    // {
+    //     $page = $request->input('page', 1);
+    //     $perPage = $request->input('perPage', 10);
+    //     $keyword = $request->input('keyword', '');
 
-        $query = Search::query();
+    //     $query = Search::query();
 
-        if (!empty($keyword)) {
-            $correctedKeyword = $this->correctSpelling($keyword);
-            $searchTokens = $this->normalizeAndTokenize($correctedKeyword);
-            $dateFilters = $this->extractDateFilters($correctedKeyword);
+    //     if (!empty($keyword)) {
+    //         $correctedKeyword = $this->correctSpelling($keyword);
+    //         $searchTokens = $this->normalizeAndTokenize($correctedKeyword);
+    //         $dateFilters = $this->extractDateFilters($correctedKeyword);
 
-            $query = $query->get()->filter(function ($record) use ($searchTokens, $dateFilters) {
-                $recordTokens = $this->normalizeAndTokenize($record->keyword);
+    //         $query = $query->get()->filter(function ($record) use ($searchTokens, $dateFilters) {
+    //             $recordTokens = $this->normalizeAndTokenize($record->keyword);
 
-                // Match keyword tokens
-                foreach ($searchTokens as $searchToken) {
-                    foreach ($recordTokens as $recordToken) {
-                        if (
-                            stripos($recordToken, $searchToken) !== false || // Partial match
-                            soundex($recordToken) === soundex($searchToken) || // Phonetic match
-                            $this->isFuzzyMatch($recordToken, $searchToken) // Custom fuzzy match
-                        ) {
-                            return true;
-                        }
-                    }
-                }
+    //             // Match keyword tokens
+    //             foreach ($searchTokens as $searchToken) {
+    //                 foreach ($recordTokens as $recordToken) {
+    //                     if (
+    //                         stripos($recordToken, $searchToken) !== false || // Partial match
+    //                         soundex($recordToken) === soundex($searchToken) || // Phonetic match
+    //                         $this->isFuzzyMatch($recordToken, $searchToken) // Custom fuzzy match
+    //                     ) {
+    //                         return true;
+    //                     }
+    //                 }
+    //             }
 
-                // Match date filters
-                if (!empty($dateFilters)) {
-                    foreach ($dateFilters as $dateFilter) {
-                        if (stripos($record->keyword, $dateFilter) !== false) {
-                            return true;
-                        }
-                    }
-                }
+    //             // Match date filters
+    //             if (!empty($dateFilters)) {
+    //                 foreach ($dateFilters as $dateFilter) {
+    //                     if (stripos($record->keyword, $dateFilter) !== false) {
+    //                         return true;
+    //                     }
+    //                 }
+    //             }
 
-                return false;
-            });
+    //             return false;
+    //         });
 
-            $data = $query->forPage($page, $perPage)->values();
-        } else {
-            $data = $query->paginate($perPage, ['*'], 'page', $page);
-        }
+    //         $data = $query->forPage($page, $perPage)->values();
+    //     } else {
+    //         $data = $query->paginate($perPage, ['*'], 'page', $page);
+    //     }
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
 }

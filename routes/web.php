@@ -42,7 +42,6 @@ Route::prefix('panel')->group(function () {
 
         //Search API
         Route::get('/search', [SearchBlogController::class, 'index'])->name('cgg.search')->middleware(middleware: 'auth.api');
-        Route::get('/image', [SearchBlogController::class,'imageScrollPage'])->name('cgg.image')->middleware('auth.api');
 
         // group handle middleware for admin and staff
         Route::group(['middleware' => 'auth'], function () {

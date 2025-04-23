@@ -25,7 +25,6 @@ class SearchExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             'ID',
             'Domain',
             'Date',
-            'Keyword',
             'Title',
             'Website Name',
             'Description',
@@ -34,7 +33,7 @@ class SearchExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
 
     public function collection()
     {
-        return Search::select('id', 'domain', 'date', 'keyword', 'title', 'website_name', 'description')->get();
+        return Search::select('id', 'domain', 'date',  'title', 'website_name', 'description')->get();
     }
 
     // Apply styles for header and make table highlight
